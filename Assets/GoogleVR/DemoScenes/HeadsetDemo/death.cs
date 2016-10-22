@@ -14,7 +14,7 @@ public class death : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	    if(tf.position.z <= 0)
+		if(Mathf.Abs(tf.position.z) <= .1f)
         {
             gameOver.SetActive(true);
         }
