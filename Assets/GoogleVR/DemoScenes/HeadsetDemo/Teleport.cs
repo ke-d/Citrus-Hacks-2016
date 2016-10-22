@@ -18,13 +18,17 @@ using System.Collections;
 [RequireComponent(typeof(Collider))]
 public class Teleport : MonoBehaviour, IGvrGazeResponder {
   private Vector3 startingPosition;
+    [SerializeField]
+    private int clicksToKill;
     public GameObject gameManager;
     private GameManager gm;
     void Start() {
-    startingPosition = transform.localPosition;
+        clicksToKill = Random.Range(1, 5);
+        startingPosition = transform.localPosition;
     SetGazedAt(false);
         gameManager = GameObject.FindGameObjectWithTag("GameManager");
         gm = gameManager.GetComponent<GameManager>();
+        changeColor(clicksToKill);
     }
 
   void LateUpdate() {
@@ -66,13 +70,42 @@ public class Teleport : MonoBehaviour, IGvrGazeResponder {
 
     public void Kill()
     {
+
         if (Time.timeScale != 0f)
         {
-            GameObject.Destroy(gameObject);
-            gm.updateScore();
+            if (clicksToKill < 1)
+            {
+                GameObject.Destroy(gameObject);
+                gm.updateScore(); 
+            }
+            else
+            {
+                clicksToKill--;
+            }
+        }
+        changeColor(clicksToKill);
+    }
+    public void changeColor(int color)
+    {
+        switch(color)
+        {
+            case 1:
+                GetComponent<Renderer>().material.color = Color.red;
+                break;
+            case 2:
+                GetComponent<Renderer>().material.color = Color.magenta;
+                break;
+            case 3:
+                GetComponent<Renderer>().material.color = Color.yellow;
+                break;
+            case 4:
+                GetComponent<Renderer>().material.color = Color.green;
+                break;
+            case 5:
+                GetComponent<Renderer>().material.color = Color.blue;
+                break;
         }
     }
-
   #region IGvrGazeResponder implementation
 
   /// Called when the user is looking on a GameObject with this script,
