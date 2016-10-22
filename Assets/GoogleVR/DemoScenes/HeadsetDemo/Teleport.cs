@@ -18,11 +18,14 @@ using System.Collections;
 [RequireComponent(typeof(Collider))]
 public class Teleport : MonoBehaviour, IGvrGazeResponder {
   private Vector3 startingPosition;
-
-  void Start() {
+    public GameObject gameManager;
+    private GameManager gm;
+    void Start() {
     startingPosition = transform.localPosition;
     SetGazedAt(false);
-  }
+        gameManager = GameObject.FindGameObjectWithTag("GameManager");
+        gm = gameManager.GetComponent<GameManager>();
+    }
 
   void LateUpdate() {
     GvrViewer.Instance.UpdateState();
@@ -63,7 +66,11 @@ public class Teleport : MonoBehaviour, IGvrGazeResponder {
 
     public void Kill()
     {
-        GameObject.Destroy(gameObject);
+        if (Time.timeScale != 0f)
+        {
+            GameObject.Destroy(gameObject);
+            gm.updateScore();
+        }
     }
 
   #region IGvrGazeResponder implementation

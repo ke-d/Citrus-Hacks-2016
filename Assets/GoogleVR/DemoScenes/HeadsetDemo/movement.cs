@@ -11,7 +11,7 @@ public class movement : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void FixedUpdate () {
 		if(time < 1f) {
 			time += Time.deltaTime;
 		}
