@@ -42,4 +42,9 @@ public class GameManager : MonoBehaviour {
         score++;
         scoreUI.text = "Score: " + score;
     }
+
+    public int getScore()
+    {
+        return score;
+    }
 }

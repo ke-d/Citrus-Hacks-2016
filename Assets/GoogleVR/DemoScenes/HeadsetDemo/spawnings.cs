@@ -19,7 +19,7 @@ public class spawnings : MonoBehaviour {
         float angle = Random.value * 360;
         Vector3 pos;
         pos.x = center.x + radius * Mathf.Sin(angle * Mathf.Deg2Rad);
-        pos.y = center.y + 5;
+        pos.y = center.y + Random.Range(0,5);
         pos.z = center.z + radius * Mathf.Cos(angle * Mathf.Deg2Rad);
 
         return pos;
