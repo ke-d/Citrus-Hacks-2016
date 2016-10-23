@@ -10,6 +10,7 @@ public class Spawner : MonoBehaviour {
     public bool active = true;
 	// Use this for initialization
 	void Start () {
+        transform.position = Camera.main.transform.position;
         StartCoroutine(SpawnWaves());
 	}
 	
