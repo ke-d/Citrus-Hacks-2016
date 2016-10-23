@@ -22,6 +22,11 @@ public class GameManager : MonoBehaviour {
         audiosource.Play();
     }
 
+    public void playSoundOnce(int index)
+    {
+        audiosource.PlayOneShot(clips[index], 1f);
+    }
+
     public void reset()
     {
         playSound(0);

@@ -80,6 +80,7 @@ public class Teleport : MonoBehaviour, IGvrGazeResponder {
         }
         else
         {
+            gm.playSoundOnce(1);
             clicktoKill--;
         }
     }

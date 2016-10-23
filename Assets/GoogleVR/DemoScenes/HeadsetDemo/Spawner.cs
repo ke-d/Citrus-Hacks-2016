@@ -27,10 +27,6 @@ public class Spawner : MonoBehaviour {
             for(int i = 0; i < monsterCount; i++)
             {
                 GameObject.Instantiate(prefabs[Random.Range(0, prefabs.Length)]);
-                if(i == 3)
-                {
-                    spawnWait = 1f;
-                }
                 yield return new WaitForSeconds(spawnWait);
             }
             yield return new WaitForSeconds(waveWait);
