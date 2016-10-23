@@ -3,14 +3,17 @@ using System.Collections;
 
 public class Spawner : MonoBehaviour {
     public GameObject[] prefabs;
-    public float startWait = 1f;
-    public float spawnWait = 2f;
-    public float waveWait = 7f;
+    public float startWait;
+    public float spawnWait;
+    public float waveWait;
     public int monsterCount = 5;
     public bool active = true;
 	// Use this for initialization
 	void Start () {
         transform.position = Camera.main.transform.position;
+        startWait = 1f;
+        spawnWait = 2f;
+        waveWait = 7f;
         StartCoroutine(SpawnWaves());
 	}
 	
