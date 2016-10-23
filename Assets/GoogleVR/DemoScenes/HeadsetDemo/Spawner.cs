@@ -22,11 +22,20 @@ public class Spawner : MonoBehaviour {
     IEnumerator SpawnWaves()
     {
         yield return new WaitForSeconds(startWait);
+        int roundCount = 0;
         while (active)
         {
+            if(roundCount > 5)
+            {
+                if(roundCount < 10)
+                {
+                    spawnWait = spawnWait - 0.15f;
+                }
+            }
             for(int i = 0; i < monsterCount; i++)
             {
                 GameObject.Instantiate(prefabs[Random.Range(0, prefabs.Length)]);
+                
                 yield return new WaitForSeconds(spawnWait);
             }
             yield return new WaitForSeconds(waveWait);
@@ -34,6 +43,7 @@ public class Spawner : MonoBehaviour {
             {
                 waveWait--;
             }
+            roundCount++;
         }
     }
 }
