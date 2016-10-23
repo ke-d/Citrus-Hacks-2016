@@ -6,7 +6,7 @@ public class spawnings : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         tf = gameObject.GetComponent<Transform>();
-        tf.position = RandomCircle(new Vector3(0, 0, 0), 5);
+        tf.position = RandomCircle(Camera.main.transform.position, 5);
 	}
 	
 	// Update is called once per frame

@@ -19,7 +19,7 @@ public class movement : MonoBehaviour {
 		if(time < 1f) {
 			time += Time.deltaTime;
 		}
-        tf.position = Vector3.Lerp(tf.position, new Vector3(0, 0, 0), time / Random.Range(lower, upper));
+        tf.position = Vector3.Lerp(tf.position, Camera.main.transform.position, time / Random.Range(lower, upper));
         
 	}
 }
