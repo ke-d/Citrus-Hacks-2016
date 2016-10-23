@@ -6,20 +6,25 @@ public class GameManager : MonoBehaviour {
     public Text scoreUI;
     public GameObject floorcanvas;
     public GameObject[] explosions;
+    public AudioClip[] clips;
+    public AudioSource audiosource;
     private int score;
     // Use this for initialization
     void Start() {
-        Instantiate(explosions[1], Camera.main.transform.position, Quaternion.identity);
+        // Instantiate(explosions[1], Camera.main.transform.position, Quaternion.identity);
+        audiosource = GetComponent<AudioSource>();
         reset();
     }
 
-    // Update is called once per frame
-    void Update() {
 
+    void playSound(int index) {
+        audiosource.clip = clips[index];
+        audiosource.Play();
     }
 
     public void reset()
     {
+        playSound(0);
         score = 0;
         scoreUI.text = "Score: " + score;
         Time.timeScale = 1f;
@@ -35,8 +40,8 @@ public class GameManager : MonoBehaviour {
     public void death()
     {
         Instantiate(explosions[0], Camera.main.transform.position, Quaternion.identity);
-  
         floorcanvas.SetActive(true);
+        audiosource.Stop();
         StartCoroutine(stopTime());
     }
 
