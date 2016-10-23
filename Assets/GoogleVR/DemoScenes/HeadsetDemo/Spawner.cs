@@ -29,6 +29,10 @@ public class Spawner : MonoBehaviour {
                 yield return new WaitForSeconds(spawnWait);
             }
             yield return new WaitForSeconds(waveWait);
+            if(waveWait > 1)
+            {
+                waveWait--;
+            }
         }
     }
 }
