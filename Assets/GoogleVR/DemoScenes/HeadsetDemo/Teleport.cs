@@ -17,11 +17,15 @@ using System.Collections;
 
 [RequireComponent(typeof(Collider))]
 public class Teleport : MonoBehaviour, IGvrGazeResponder {
+    public GameObject explosion;
   private Vector3 startingPosition;
-
+    private int clicktoKill;
+    GameManager gm;
   void Start() {
+        gm = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
     startingPosition = transform.localPosition;
     SetGazedAt(false);
+        clicktoKill = Random.Range(1, 5);
   }
 
   void LateUpdate() {
@@ -63,7 +67,22 @@ public class Teleport : MonoBehaviour, IGvrGazeResponder {
 
     public void Kill()
     {
-        GameObject.Destroy(gameObject);
+
+        if (clicktoKill < 1)
+        {
+            if (Time.timeScale != 0f)
+            {
+
+                GameObject.Destroy(gameObject);
+                Instantiate(explosion, transform.position, Quaternion.identity);
+                gm.updateScore();
+            } 
+        }
+        else
+        {
+            
+            clicktoKill--;
+        }
     }
 
   #region IGvrGazeResponder implementation
