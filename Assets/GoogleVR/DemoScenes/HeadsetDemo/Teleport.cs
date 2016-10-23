@@ -17,6 +17,7 @@ using System.Collections;
 
 [RequireComponent(typeof(Collider))]
 public class Teleport : MonoBehaviour, IGvrGazeResponder {
+    public GameObject explosion;
   private Vector3 startingPosition;
     private int clicktoKill;
     GameManager gm;
@@ -73,6 +74,7 @@ public class Teleport : MonoBehaviour, IGvrGazeResponder {
             {
 
                 GameObject.Destroy(gameObject);
+                Instantiate(explosion, transform.position, Quaternion.identity);
                 gm.updateScore();
             } 
         }
