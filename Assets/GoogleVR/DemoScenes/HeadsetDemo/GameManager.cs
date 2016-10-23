@@ -78,8 +78,8 @@ public class GameManager : MonoBehaviour {
         {
             fireWall = (GameObject) Instantiate(explosions[1], Camera.main.transform.position, Quaternion.identity);
         }
+		#endif
     }
-#endif
     public int getScore()
     {
         return score;
