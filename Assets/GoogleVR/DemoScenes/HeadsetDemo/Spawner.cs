@@ -4,8 +4,8 @@ using System.Collections;
 public class Spawner : MonoBehaviour {
     public GameObject[] prefabs;
     public float startWait = 1f;
-    public float spawnWait = 1f;
-    public float waveWait = 5f;
+    public float spawnWait = 2f;
+    public float waveWait = 7f;
     public int monsterCount = 5;
     public bool active = true;
 	// Use this for initialization

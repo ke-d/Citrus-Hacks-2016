@@ -15,6 +15,7 @@ public class death : MonoBehaviour {
         if(col.gameObject.tag == "Monster")
         {
             gm.death();
+
         }
     }
 
