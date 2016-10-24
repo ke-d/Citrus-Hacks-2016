@@ -9,12 +9,15 @@ public class GameManager : MonoBehaviour {
     public AudioClip[] clips;
     public AudioSource audiosource;
     private GameObject fireWall;
+
     private int score;
     // Use this for initialization
     void Start() {
         //       Instantiate(explosions[1], Camera.main.transform.position, Quaternion.identity);
         audiosource = GetComponent<AudioSource>();
         reset();
+		Cursor.lockState = CursorLockMode.Locked;
+		Cursor.visible = false;
     }
 
     void Update()
@@ -78,8 +81,8 @@ public class GameManager : MonoBehaviour {
         {
             fireWall = (GameObject) Instantiate(explosions[1], Camera.main.transform.position, Quaternion.identity);
         }
+		#endif
     }
-#endif
     public int getScore()
     {
         return score;
